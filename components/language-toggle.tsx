@@ -3,7 +3,7 @@
 import * as React from 'react';
 import { Languages } from 'lucide-react';
 import { useLocale } from 'next-intl';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname, useRouter } from '@/i18n/navigation';
 import {
   Select,
   SelectContent,
@@ -29,10 +29,13 @@ export function LanguageToggle() {
   // js-index-maps: Use Map.get() for O(1) lookup instead of Array.find()
   const currentLanguage = LANGUAGE_MAP.get(locale);
 
+  // next-intl navigation: pathname is locale-less (e.g. '/about') and
+  // router.push(href, { locale }) prefixes the URL with the new locale AND
+  // syncs the NEXT_LOCALE cookie on the client, so later navigations
+  // (header/footer links) keep the selected language.
   const handleValueChange = (newLocale: string | null) => {
     if (!newLocale) return;
-    const newPathname = pathname.replace(`/${locale}`, `/${newLocale}`);
-    router.push(newPathname);
+    router.push(pathname, { locale: newLocale });
     setOpen(false);
   };
 

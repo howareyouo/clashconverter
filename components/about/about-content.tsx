@@ -9,7 +9,7 @@ import { useTranslations } from 'next-intl';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, Check } from 'lucide-react';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import {
   Accordion,
   AccordionContent,

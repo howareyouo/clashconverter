@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import createMiddleware from 'next-intl/middleware';
+import { routing } from './i18n/routing';
 
 // Chinese-speaking regions
 const CHINESE_REGIONS = ['CN', 'HK', 'TW', 'MO', 'SG'];
@@ -33,12 +34,9 @@ async function getPreferredLocale(request: NextRequest): Promise<string> {
   return country && CHINESE_REGIONS.includes(country) ? 'zh' : 'en';
 }
 
-// Create next-intl middleware with default locale prefix always shown
-const intlMiddleware = createMiddleware({
-  locales: ['en', 'zh'],
-  defaultLocale: 'en',
-  localePrefix: 'always' // Always show locale prefix to avoid conflicts
-});
+// Create next-intl middleware from the shared routing config
+// (locales, defaultLocale, localePrefix stay in sync with i18n/navigation.ts)
+const intlMiddleware = createMiddleware(routing);
 
 // Main proxy function for Edge Runtime
 export async function proxy(request: NextRequest) {
