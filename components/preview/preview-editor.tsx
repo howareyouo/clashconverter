@@ -411,7 +411,7 @@ class EditorErrorBoundary extends React.Component<
     if (this.state.hasError) {
       return (
         <div
-          className="flex items-center justify-center rounded-md border border-border bg-muted"
+          className="flex items-center justify-center bg-muted"
           style={{ height: this.props.height || '400px' }}
         >
           <div className="text-center space-y-3">
@@ -649,9 +649,7 @@ export function PreviewEditor({
   return (
     <EditorErrorBoundary height={height}>
       <div
-        className={`rounded-md border ${
-          themeState.isDark ? 'border-border bg-background' : 'border-border bg-background'
-        }`}
+        className="bg-background"
         style={{ height, overflow: 'hidden' }}
       >
         {!mounted && (

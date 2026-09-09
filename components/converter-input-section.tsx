@@ -95,7 +95,7 @@ export const InputSection = memo(({
 
         <CardContent className="relative z-10 flex flex-1 flex-col pt-3">
           {/* Editor Area - brutal well */}
-          <div className="flex-1 overflow-hidden rounded-lg border-2 border-ink bg-paper shadow-brutal">
+          <div className="flex-1 overflow-hidden rounded-lg bg-black/20">
             <PreviewEditor
               value={input}
               language={inputLanguage}
