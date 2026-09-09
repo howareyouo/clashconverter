@@ -1,9 +1,8 @@
 /* NeoBrutal UI - 全站视觉(neobrutalui.live 风格) */
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap');
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@config "../tailwind.config.ts";
 
 :root {
   /* ── NeoBrutal 基础调色板 ─────────────────────────── */
@@ -19,7 +18,7 @@
 
   /* ── 兼容旧 neo-* 变量(值改为新调色板,旧类名自动换肤) ─ */
   --neo-canvas: var(--canvas);
-  --neo-canvas-dark: #0A0A0F;
+  --neo-canvas-dark: #14141A;
 
   --neo-foreground: var(--ink);
   --neo-muted: var(--muted);
@@ -30,14 +29,14 @@
   --neo-accent-muted: rgba(182, 172, 228, 0.28);
 
   --neo-card: var(--paper);
-  --neo-card-dark: #1C1C26;
+  --neo-card-dark: #1F1F29;
   --neo-card-elevated: #FFFFFF;
   --neo-card-elevated-dark: #262633;
 
   --neo-border: var(--ink);
   --neo-border-strong: var(--ink);
-  --neo-border-dark: #EDECF5;
-  --neo-border-strong-dark: #EDECF5;
+  --neo-border-dark: #E1DFEB;
+  --neo-border-strong-dark: #E1DFEB;
 
   --neo-success: var(--mint);
   --neo-warning: var(--lemon);
@@ -72,9 +71,10 @@
 }
 
 .dark {
-  --canvas: #0A0A0F;
-  --paper: #1C1C26;
-  --ink: #EDECF5;
+  /* 柔和深色: 底色避免纯黑(#0A0A0F→#14141A),文字/描边由纯白(#EDECF5)降为柔和白,减轻眩光 */
+  --canvas: #14141A;
+  --paper: #1F1F29;
+  --ink: #E1DFEB;
   --muted: #9B99AC;
   --brutal: #000000;
 
@@ -90,27 +90,27 @@
   --neo-border: var(--ink);
   --neo-border-strong: var(--ink);
 
-  /* shadcn 语义色深色映射 */
-  --background: 240 20% 5%;      /* #0A0A0F */
-  --foreground: 250 31% 94%;     /* #EDECF5 */
-  --card: 240 15% 13%;           /* #1C1C26 */
-  --card-foreground: 250 31% 94%;
-  --popover: 240 15% 13%;
-  --popover-foreground: 250 31% 94%;
+  /* shadcn 语义色深色映射(降低亮度与对比,缓和刺眼感) */
+  --background: 240 13% 9%;      /* #14141A */
+  --foreground: 250 23% 90%;     /* #E1DFEB */
+  --card: 240 14% 14%;           /* #1F1F29 */
+  --card-foreground: 250 23% 90%;
+  --popover: 240 14% 14%;
+  --popover-foreground: 250 23% 90%;
   --primary: 251 51% 78%;
   --primary-foreground: 0 0% 0%;
   --secondary: 240 15% 17%;
-  --secondary-foreground: 250 31% 94%;
-  --muted: 240 13% 10%;
+  --secondary-foreground: 250 23% 90%;
+  --muted: 240 13% 12%;
   --muted-foreground: 246 10% 64%; /* #9B99AC */
   --accent: 251 51% 78%;
   --accent-foreground: 0 0% 0%;
   --destructive: 0 67% 68%;
   --destructive-foreground: 0 0% 0%;
-  --border: 250 31% 94%;
-  --input: 250 31% 94%;
-  --ring: 250 31% 94%;
-  --chart-5: 250 31% 94%;
+  --border: 240 10% 24%;         /* #373740: 分隔线/细边框灰 */
+  --input: 240 10% 24%;
+  --ring: 250 23% 90%;
+  --chart-5: 250 23% 90%;
 }
 
 @layer base {
@@ -217,4 +217,20 @@
   box-shadow: 4px 4px 0 0 var(--brutal) !important;
   font-family: 'Inter', sans-serif;
   font-weight: 500 !important;
+}
+
+/* ── 页面容器: 页面宽度统一定义于此, 改一处全站生效 ────── */
+@layer components {
+  /* 标准页面宽度: 默认 max-w-6xl(1152px) 居中, 水平留白 px-4 md:px-8 */
+  .page-container {
+    @apply w-full mx-auto px-4 md:px-8;
+    max-width: var(--page-max-width, 90rem);
+  }
+
+  /* 窄版(长文页如 /about): max-w-4xl(896px)
+     需与 .page-container 同时使用:
+     例: className="page-container page-container--narrow py-12 md:py-16" */
+  .page-container--narrow {
+    --page-max-width: 56rem;
+  }
 }

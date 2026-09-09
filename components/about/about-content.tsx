@@ -21,7 +21,7 @@ export function AboutContent() {
   const t = useTranslations();
 
   return (
-    <section className="w-full max-w-4xl mx-auto px-4 py-12 md:py-16">
+    <section className="page-container page-container--narrow py-12 md:py-16">
       {/* Back button */}
       <div className="mb-8">
         <Link href="/">
@@ -106,13 +106,17 @@ export function AboutContent() {
           {t('seoContent.faq.title')}
         </h2>
 
-        <Accordion className="w-full max-w-3xl mx-auto rounded-lg border-2 border-ink bg-paper px-5 shadow-brutal">
+        <Accordion
+          multiple
+          defaultValue={['item-0']}
+          className="w-full max-w-3xl mx-auto space-y-4"
+        >
           {t.raw('seoContent.faq.items').map((faq: { q: string; a: string }, index: number) => (
             <AccordionItem key={index} value={`item-${index}`}>
               <AccordionTrigger className="text-ink">
                 {faq.q}
               </AccordionTrigger>
-              <AccordionContent>
+              <AccordionContent className="text-ink/80">
                 {faq.a}
               </AccordionContent>
             </AccordionItem>

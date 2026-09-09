@@ -12,13 +12,13 @@ const PROTOCOL_CARDS = [
   { name: 'SOCKS5' },
 ] as const;
 
-// NeoBrutal 平涂色块(循环使用),ink 底配白字,其余配黑字
+// NeoBrutal 平涂色块(循环使用):ink 底随明暗翻转,配 canvas 色字保持可读;其余配黑字
 const TILE_COLORS = [
   'bg-main text-black',
   'bg-lemon text-black',
   'bg-mint text-black',
   'bg-hotpink text-black',
-  'bg-ink text-white',
+  'bg-ink text-canvas',
   'bg-main text-black',
   'bg-lemon text-black',
   'bg-mint text-black',

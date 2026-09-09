@@ -89,7 +89,7 @@ export function ResourcesContent() {
   const t = useTranslations();
 
   return (
-    <section className="w-full max-w-6xl mx-auto px-4 py-12 md:py-16">
+    <section className="page-container py-12 md:py-16">
       {/* Back button */}
       <div className="mb-8">
         <Link href="/">
@@ -263,7 +263,7 @@ export function ResourcesContent() {
                   href={tool.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={cn(cardLinkClass, 'bg-ink text-white shadow-brutal hover:brightness-125')}
+                  className={cn(cardLinkClass, 'bg-ink text-canvas shadow-brutal hover:brightness-125 dark:hover:brightness-95')}
                 >
                   <Radar className="h-4 w-4" strokeWidth={2.5} />
                   {t('resources.detectors.visitButton')}

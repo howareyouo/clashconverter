@@ -84,14 +84,14 @@ export function Converter() {
   }, [inputFormat, setInput, pendingInputRef]);
 
   return (
-    <div className="w-full max-w-6xl mx-auto px-4 py-8 md:py-12 lg:py-16 space-y-6 md:space-y-8">
+    <div className="page-container py-8 md:py-12 lg:py-16 space-y-6 md:space-y-8">
       {/* Header - Entrance with stagger */}
       <ConverterHeader title={t('title')} subtitle={t('subtitle')} />
 
       {/* Main converter grid - Asymmetric, purposeful spacing */}
       <div className="grid grid-cols-1 gap-4 md:gap-6 lg:grid-cols-2 lg:gap-8 relative">
         {/* Input Section - Left Side */}
-        <div className="min-h-[520px] md:min-h-[560px] animate-neo-enter" style={{ animationDelay: '0.05s' }}>
+        <div className="min-h-[810px] md:min-h-[720px] animate-neo-enter" style={{ animationDelay: '0.05s' }}>
           <InputSection
             input={input}
             inputFormat={inputFormat}
@@ -118,7 +118,7 @@ export function Converter() {
         </div>
 
         {/* Output Section - Right Side */}
-        <div className="min-h-[520px] md:min-h-[560px] animate-neo-enter" style={{ animationDelay: '0.1s' }}>
+        <div className="min-h-[810px] md:min-h-[720px] animate-neo-enter" style={{ animationDelay: '0.1s' }}>
           <OutputSection
             output={output}
             outputFormat={outputFormat}

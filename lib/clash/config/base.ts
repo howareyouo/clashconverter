@@ -60,60 +60,9 @@ export interface ProxyGroupConfig {
 
 export const PROXY_GROUPS_CONFIG: ProxyGroupConfig[] = [
   {
-    name: '🔰 选择节点',
+    name: 'PROXY',
     type: 'select',
     useAllProxies: true,
     proxies: ['DIRECT'],
-  },
-  {
-    name: '🌏 爱奇艺&哔哩哔哩',
-    type: 'select',
-    proxies: ['DIRECT'],
-  },
-  {
-    name: '📺 动画疯',
-    type: 'select',
-    proxies: ['🔰 选择节点', 'DIRECT'],
-  },
-  {
-    name: '🎮 Steam 登录/下载',
-    type: 'select',
-    proxies: ['DIRECT', '🔰 选择节点'],
-  },
-  {
-    name: '🎮 Steam 商店/社区',
-    type: 'select',
-    proxies: ['🔰 选择节点', 'DIRECT'],
-  },
-  {
-    name: '🌩️ Cloudflare',
-    type: 'select',
-    proxies: ['🔰 选择节点', 'DIRECT'],
-  },
-  {
-    name: '☁️ OneDrive',
-    type: 'select',
-    useAllProxies: true,
-    proxies: ['🔰 选择节点', 'DIRECT'],
-  },
-  {
-    name: '🎓学术网站',
-    type: 'select',
-    proxies: ['DIRECT', '🔰 选择节点'],
-  },
-  {
-    name: '🇨🇳 国内网站',
-    type: 'select',
-    proxies: ['DIRECT', '🔰 选择节点'],
-  },
-  {
-    name: '🛑 拦截广告',
-    type: 'select',
-    proxies: ['REJECT', 'DIRECT', '🔰 选择节点'],
-  },
-  {
-    name: '🐟 漏网之鱼',
-    type: 'select',
-    proxies: ['🔰 选择节点', 'DIRECT'],
   },
 ];

@@ -15,7 +15,7 @@ export function Footer() {
 
   return (
     <footer className="w-full border-t-2 border-ink bg-paper py-8 md:py-10">
-      <div className="mx-auto max-w-6xl px-4 md:px-8">
+      <div className="page-container">
 
         {/* Main Footer Content - Clean horizontal layout */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 md:gap-8">
