@@ -31,7 +31,6 @@
     "@codemirror/view": "^6.39.11",
     "@lezer/common": "^1.5.0",
     "@lezer/highlight": "^1.2.3",
-    "@opennextjs/cloudflare": "1.14.9",
     "clsx": "^2.1.1",
     "lucide-react": "^0.562.0",
     "next": "16.1.5",
