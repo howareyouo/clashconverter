@@ -25,14 +25,14 @@ const SelectTrigger = React.forwardRef<
   <BaseSelect.Trigger
     ref={ref}
     className={cn(
-      "flex h-10 w-full items-center justify-between rounded-md border border-stone-200 bg-white px-3 py-2 text-sm ring-offset-white placeholder:text-stone-500 focus:outline-none focus:ring-2 focus:ring-stone-950 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1 dark:border-stone-800 dark:bg-stone-950 dark:ring-offset-stone-950 dark:placeholder:text-stone-400 dark:focus:ring-stone-300",
+      "flex h-10 w-full cursor-pointer items-center justify-between gap-2 rounded-lg border-2 border-ink bg-paper px-3 py-2 text-sm font-semibold text-ink shadow-brutal outline-none transition-all duration-100 placeholder:text-muted-foreground focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2 focus-visible:ring-offset-background active:translate-x-[1px] active:translate-y-[1px] active:shadow-none disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1",
       className
     )}
     {...props}
   >
     {children}
     <BaseSelect.Icon>
-      <ChevronDown aria-hidden="true" className="h-4 w-4 opacity-50" />
+      <ChevronDown aria-hidden="true" className="h-4 w-4 opacity-60" />
     </BaseSelect.Icon>
   </BaseSelect.Trigger>
 ))
@@ -60,12 +60,12 @@ const SelectContent = React.forwardRef<
       <BaseSelect.Popup
         ref={ref}
         className={cn(
-          "relative z-50 max-h-96 min-w-[max(8rem,var(--anchor-width))] overflow-y-auto overscroll-contain rounded-md border border-stone-200 bg-white text-stone-950 shadow-md dark:border-stone-800 dark:bg-stone-950 dark:text-stone-50",
+          "relative z-50 max-h-96 min-w-[max(8rem,var(--anchor-width))] overflow-y-auto overscroll-contain rounded-lg border-2 border-ink bg-paper p-1.5 text-ink shadow-brutal-lg",
           className
         )}
         {...props}
       >
-        <BaseSelect.List className="p-1">{children}</BaseSelect.List>
+        <BaseSelect.List>{children}</BaseSelect.List>
       </BaseSelect.Popup>
     </BaseSelect.Positioner>
   </BaseSelect.Portal>
@@ -78,7 +78,7 @@ const SelectLabel = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <BaseSelect.GroupLabel
     ref={ref}
-    className={cn("py-1.5 pl-8 pr-2 text-sm font-semibold", className)}
+    className={cn("py-1.5 pl-8 pr-2 text-xs font-bold uppercase tracking-wider text-muted-foreground", className)}
     {...props}
   />
 ))
@@ -91,14 +91,14 @@ const SelectItem = React.forwardRef<
   <BaseSelect.Item
     ref={ref}
     className={cn(
-      "relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[highlighted]:bg-stone-100 data-[highlighted]:text-stone-900 dark:data-[highlighted]:bg-stone-800 dark:data-[highlighted]:text-stone-50",
+      "relative flex w-full cursor-pointer select-none items-center rounded-md py-2 pl-8 pr-3 text-sm font-semibold text-ink outline-none data-[disabled]:pointer-events-none data-[disabled]:opacity-50 data-[highlighted]:bg-main data-[highlighted]:text-black",
       className
     )}
     {...props}
   >
-    <span className="absolute left-2 flex h-3.5 w-3.5 items-center justify-center">
+    <span className="absolute left-2 flex h-4 w-4 items-center justify-center">
       <BaseSelect.ItemIndicator>
-        <Check aria-hidden="true" className="h-4 w-4" />
+        <Check aria-hidden="true" className="h-4 w-4" strokeWidth={3} />
       </BaseSelect.ItemIndicator>
     </span>
 
@@ -113,7 +113,7 @@ const SelectSeparator = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <BaseSelect.Separator
     ref={ref}
-    className={cn("-mx-1 my-1 h-px bg-stone-100 dark:bg-stone-800", className)}
+    className={cn("-mx-1 my-1 h-px bg-ink/20", className)}
     {...props}
   />
 ))

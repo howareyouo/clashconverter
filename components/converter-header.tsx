@@ -17,12 +17,12 @@ export function ConverterHeader({ title, subtitle }: ConverterHeaderProps) {
           height={80}
           className="mx-auto max-w-[180px] md:max-w-[220px] lg:max-w-none transition-transform duration-300 hover:scale-[1.02]"
         />
-        {/* Accent underline - structural element */}
-        <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-16 h-0.5 bg-neo-foreground/30 dark:bg-white/30 rounded-full" />
+        {/* Accent underline - brutal block */}
+        <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 h-1.5 w-24 bg-ink" />
       </div>
 
       {/* Subtitle - refined typography */}
-      <p className="text-sm md:text-base text-neo-muted dark:text-neo-mutedLight max-w-xl mx-auto leading-relaxed font-normal tracking-tight">
+      <p className="text-sm md:text-base text-muted-foreground max-w-xl mx-auto leading-relaxed font-medium tracking-tight">
         {subtitle}
       </p>
     </header>

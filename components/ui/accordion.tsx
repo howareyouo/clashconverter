@@ -14,7 +14,7 @@ const AccordionItem = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <BaseAccordion.Item
     ref={ref}
-    className={cn("group border-b", className)}
+    className={cn("group border-b-2 border-ink last:border-b-0", className)}
     {...props}
   />
 ))
@@ -28,13 +28,15 @@ const AccordionTrigger = React.forwardRef<
     <BaseAccordion.Trigger
       ref={ref}
       className={cn(
-        "flex flex-1 items-center justify-between gap-4 py-4 font-medium transition-all hover:underline",
+        "flex flex-1 cursor-pointer items-center justify-between gap-4 py-4 text-left text-base font-bold transition-colors hover:text-ink/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink",
         className
       )}
       {...props}
     >
       {children}
-      <ChevronDown className="h-4 w-4 shrink-0 transition-transform duration-200 group-data-[open]:rotate-180" />
+      <span className="grid h-7 w-7 shrink-0 place-items-center rounded-md border-2 border-ink bg-paper text-ink shadow-brutal transition-transform duration-200 group-data-[open]:rotate-180 group-data-[open]:bg-main group-data-[open]:text-black group-data-[open]:active:translate-x-[1px] group-data-[open]:active:translate-y-[1px] group-data-[open]:active:shadow-none">
+        <ChevronDown className="h-4 w-4" strokeWidth={3} />
+      </span>
     </BaseAccordion.Trigger>
   </BaseAccordion.Header>
 ))
@@ -46,7 +48,7 @@ const AccordionContent = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <BaseAccordion.Panel
     ref={ref}
-    className="overflow-hidden text-sm"
+    className="overflow-hidden text-sm text-muted-foreground"
     {...props}
   >
     <div className={cn("pb-4 pt-0", className)}>{children}</div>

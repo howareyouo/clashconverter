@@ -54,9 +54,9 @@ export function ClientDialog() {
           <Button
             variant="outline"
             size="sm"
-            className="h-9 gap-2 border-stone-200 dark:border-stone-800"
+            className="h-9 gap-2"
           >
-            <Download className="h-4 w-4" />
+            <Download className="h-4 w-4" strokeWidth={2.5} />
             <span className="hidden sm:inline">{t('buttonLabel')}</span>
           </Button>
         }
@@ -72,7 +72,7 @@ export function ClientDialog() {
           {clients.map((client) => (
             <Card
               key={client.id}
-              className="group hover:border-stone-400 dark:hover:border-stone-600 transition-colors"
+              className="group flex flex-col transition-all duration-100 hover:-translate-x-[1px] hover:-translate-y-[1px] hover:shadow-none"
             >
               <CardHeader>
                 <CardTitle className="flex items-center gap-2 text-lg">
@@ -83,14 +83,14 @@ export function ClientDialog() {
                   {t(`clients.${client.id}.description`)}
                 </CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent className="mt-auto">
                 <a
                   href={t(`clients.${client.id}.url`)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm font-medium text-stone-900 dark:text-stone-50 hover:text-stone-600 dark:hover:text-stone-400 transition-colors"
+                  className="inline-flex items-center gap-2 rounded-lg border-2 border-ink bg-main px-3 py-1.5 text-sm font-bold text-black shadow-brutal transition-all duration-100 hover:brightness-[0.96] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none"
                 >
-                  <Download className="h-4 w-4" />
+                  <Download className="h-4 w-4" strokeWidth={2.5} />
                   {t('downloadButton')}
                 </a>
               </CardContent>

@@ -1,4 +1,5 @@
 import React, { memo } from 'react';
+import { Check } from 'lucide-react';
 
 interface KernelFeaturesProps {
   features: string[];
@@ -8,14 +9,9 @@ interface KernelFeaturesProps {
 
 export const KernelFeatures = memo(({ title, description, features }: KernelFeaturesProps) => (
   <div className="space-y-4">
-    <div className="p-5 rounded-3xl bg-gradient-to-br from-clay-accent/10 to-clay-accent-alt/10 border border-clay-accent/20">
-      <h4
-        className="text-lg font-black text-clay-foreground"
-        style={{ fontFamily: 'Nunito, sans-serif' }}
-      >
-        {title}
-      </h4>
-      <p className="text-sm text-clay-muted mt-2 break-words font-medium" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+    <div className="rounded-lg border-2 border-ink bg-main p-4 text-black shadow-brutal">
+      <h4 className="text-base font-extrabold">{title}</h4>
+      <p className="mt-1.5 text-sm font-medium leading-relaxed break-words">
         {description}
       </p>
     </div>
@@ -23,14 +19,12 @@ export const KernelFeatures = memo(({ title, description, features }: KernelFeat
       {features.map((feature, index) => (
         <li
           key={index}
-          className="flex items-start gap-3 p-3 rounded-2xl bg-white/60 border border-white/20 transition-all duration-300 hover:-translate-y-1 hover:clay-card-hover"
+          className="flex items-start gap-3 rounded-lg border-2 border-ink bg-paper p-3 shadow-brutal transition-all duration-100 hover:-translate-x-[1px] hover:-translate-y-[1px] hover:shadow-none"
         >
-          <span className="flex items-center justify-center w-7 h-7 rounded-full bg-gradient-to-br from-clay-success to-emerald-600 clay-button shrink-0 mt-0.5">
-            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-            </svg>
+          <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-md border-2 border-ink bg-mint text-black">
+            <Check className="h-3.5 w-3.5" strokeWidth={4} />
           </span>
-          <span className="text-sm font-medium text-clay-foreground break-words" style={{ fontFamily: 'DM Sans, sans-serif' }}>
+          <span className="text-sm font-semibold break-words">
             {feature}
           </span>
         </li>

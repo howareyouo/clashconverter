@@ -56,9 +56,9 @@ export const InputSection = memo(({
         <Button
           variant="ghost"
           size="sm"
-          className="h-6 w-6 p-0 hover:bg-neo-border dark:hover:bg-neo-borderDark text-neo-muted dark:text-neo-mutedLight hover:text-neo-foreground dark:hover:text-white transition-colors duration-200 rounded-neo"
+          className="h-6 w-6 p-0"
         >
-          <Info className="w-3.5 h-3.5" />
+          <Info className="h-3.5 w-3.5" />
         </Button>
       }
     />
@@ -66,21 +66,21 @@ export const InputSection = memo(({
 
   return (
     <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-      <Card className="neo-card relative overflow-hidden rounded-neoLg bg-neo-card dark:bg-neo-cardDark border border-neo-border dark:border-neo-borderDark h-full flex flex-col transition-all duration-200 hover:border-neo-borderStrong dark:hover:border-neo-borderStrongDark">
+      <Card className="relative flex h-full flex-col overflow-hidden">
         {/* Accent bar - left side */}
-        <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-neo-foreground/20 dark:bg-white/20" />
+        <div className="absolute left-0 top-0 bottom-0 w-2 bg-main" />
 
-        <CardHeader className="relative z-10 pb-2 px-4 pt-4">
-          <div className="flex items-center justify-between">
+        <CardHeader className="relative z-10 px-5 pt-5 pb-2">
+          <div className="flex items-center justify-between gap-2">
             <CardTitle
-              className="flex items-center gap-2 cursor-pointer group select-none"
+              className="flex cursor-pointer items-center gap-2 select-none"
               onClick={() => setDialogOpen(true)}
               role="button"
               tabIndex={0}
               title="Click to view supported protocols"
             >
               {/* Technical label */}
-              <span className="text-xl md:text-2xl font-semibold text-neo-foreground dark:text-white tracking-tight">
+              <span className="text-xl md:text-2xl font-bold text-ink tracking-tight">
                 {labels.inputLabel}
               </span>
             </CardTitle>
@@ -93,9 +93,9 @@ export const InputSection = memo(({
           </div>
         </CardHeader>
 
-        <CardContent className="relative z-10 flex-1 flex flex-col px-4 pb-4">
-          {/* Editor Area - recessed, functional */}
-          <div className="flex-1 neo-input rounded-neoMd bg-neo-canvas dark:bg-neo-canvasDark border border-neo-border dark:border-neo-borderDark overflow-hidden">
+        <CardContent className="relative z-10 flex flex-1 flex-col pt-3">
+          {/* Editor Area - brutal well */}
+          <div className="flex-1 overflow-hidden rounded-lg border-2 border-ink bg-paper shadow-brutal">
             <PreviewEditor
               value={input}
               language={inputLanguage}
@@ -106,12 +106,12 @@ export const InputSection = memo(({
           </div>
 
           {/* Status Bar - technical, informative */}
-          <div className="mt-3 flex items-center justify-between text-xs h-5">
-            <div className="flex items-center gap-1.5 text-neo-muted dark:text-neo-mutedLight">
-              <Terminal className="w-3.5 h-3.5" />
-              <span className="mono">READY</span>
+          <div className="mt-3 flex h-5 items-center justify-between text-xs">
+            <div className="flex items-center gap-1.5 text-muted-foreground">
+              <Terminal className="h-3.5 w-3.5" strokeWidth={2.5} />
+              <span className="mono font-semibold">READY</span>
             </div>
-            <div className="mono text-neo-muted dark:text-neo-mutedLight">
+            <div className="mono font-semibold text-muted-foreground">
               {labels.itemsFound}
             </div>
           </div>
@@ -121,12 +121,12 @@ export const InputSection = memo(({
         </CardContent>
       </Card>
 
-      <DialogContent className="max-w-md rounded-neoLg border border-neo-border dark:border-neo-borderDark bg-neo-card dark:bg-neo-cardDark">
+      <DialogContent className="max-w-md">
         <DialogHeader>
-          <DialogTitle className="text-xl font-semibold text-neo-foreground dark:text-white tracking-tight">
+          <DialogTitle>
             {t('dialog.protocolsTitle')}
           </DialogTitle>
-          <DialogDescription className="text-neo-muted dark:text-neo-mutedLight">
+          <DialogDescription>
             {t('dialog.protocolsDescription')}
           </DialogDescription>
         </DialogHeader>

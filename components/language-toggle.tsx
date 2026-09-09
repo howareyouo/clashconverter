@@ -39,7 +39,7 @@ export function LanguageToggle() {
   return (
     <Select open={open} onOpenChange={setOpen} value={locale} onValueChange={handleValueChange}>
       <SelectTrigger
-        className="group h-10 w-auto min-w-[44px] md:min-w-[140px] gap-2 border-input bg-transparent px-3 transition-all duration-200 ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 dark:focus-visible:ring-offset-background active:scale-[0.98] hover:bg-accent hover:text-accent-foreground"
+        className="group h-9 w-auto min-w-[44px] rounded-lg px-2 md:min-w-[140px] md:px-3"
         aria-label="Select language"
       >
         <Languages className="h-4 w-4 shrink-0 transition-transform group-hover:scale-110" />

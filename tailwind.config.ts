@@ -74,6 +74,20 @@ const config: Config = {
           4: "hsl(var(--chart-4))",
           5: "hsl(var(--chart-5))",
         },
+        // NeoBrutal UI tokens (dark mode flips via CSS vars)
+        canvas: "var(--canvas)",
+        paper: "var(--paper)",
+        ink: "var(--ink)",
+        main: "var(--main)",
+        mint: "var(--mint)",
+        lemon: "var(--lemon)",
+        hotpink: "var(--hotpink)",
+        brutal: "var(--brutal)",
+      },
+      boxShadow: {
+        // NeoBrutal hard offset shadows
+        brutal: "4px 4px 0 0 var(--brutal)",
+        "brutal-lg": "6px 6px 0 0 var(--brutal)",
       },
       borderRadius: {
         lg: "var(--radius)",

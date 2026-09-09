@@ -91,7 +91,9 @@ export function SubscriptionDialog({
       case 'loading':
         return (
           <div className="flex flex-col items-center gap-4 py-8">
-            <Loader2 className="w-12 h-12 animate-spin text-primary" />
+            <span className="grid h-14 w-14 place-items-center rounded-lg border-2 border-ink bg-main text-black shadow-brutal">
+              <Loader2 className="h-7 w-7 animate-spin" />
+            </span>
             <p className="text-sm text-muted-foreground">{t('subscription.fetching')}</p>
           </div>
         );
@@ -99,9 +101,11 @@ export function SubscriptionDialog({
       case 'success':
         return (
           <div className="flex flex-col items-center gap-4 py-4">
-            <CheckCircle2 className="w-12 h-12 text-green-500" />
+            <span className="grid h-14 w-14 place-items-center rounded-lg border-2 border-ink bg-mint text-black shadow-brutal">
+              <CheckCircle2 className="h-7 w-7" />
+            </span>
             <div className="text-center space-y-2">
-              <p className="font-medium">{t('subscription.converted')}</p>
+              <p className="font-semibold">{t('subscription.converted')}</p>
               <p className="text-sm text-muted-foreground">
                 {t('subscription.proxiesFound', { count: result?.proxies?.length || 0 })}
               </p>
@@ -115,9 +119,11 @@ export function SubscriptionDialog({
       case 'error':
         return (
           <div className="flex flex-col items-center gap-4 py-4">
-            <AlertCircle className="w-12 h-12 text-destructive" />
+            <span className="grid h-14 w-14 place-items-center rounded-lg border-2 border-ink bg-hotpink text-black shadow-brutal">
+              <AlertCircle className="h-7 w-7" />
+            </span>
             <div className="text-center space-y-2">
-              <p className="font-medium text-destructive">{t('subscription.error')}</p>
+              <p className="font-semibold text-ink">{t('subscription.error')}</p>
               <p className="text-sm text-muted-foreground break-all max-w-full">{errorMessage}</p>
               {retryCount < maxRetries && (
                 <p className="text-xs text-muted-foreground">
@@ -134,8 +140,8 @@ export function SubscriptionDialog({
             <p className="text-sm text-muted-foreground">
               {t('subscription.detectSubscription')}
             </p>
-            <div className="bg-muted p-3 rounded-lg">
-              <p className="text-xs font-mono break-all">{subscriptionUrl}</p>
+            <div className="rounded-lg border-2 border-ink bg-paper p-3 shadow-brutal">
+              <p className="text-xs font-mono break-all text-ink">{subscriptionUrl}</p>
             </div>
             <p className="text-sm text-muted-foreground">
               {t('subscription.autoConvertDescription')}

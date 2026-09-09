@@ -12,40 +12,35 @@ const PROTOCOL_CARDS = [
   { name: 'SOCKS5' },
 ] as const;
 
-// Vibrant gradient colors for each protocol card - Candy Shop Palette
-const CARD_GRADIENTS = [
-  'from-clay-accent to-clay-accent-alt',
-  'from-clay-accent-alt to-pink-600',
-  'from-clay-accent-tertiary to-blue-600',
-  'from-clay-success to-emerald-600',
-  'from-clay-warning to-amber-600',
-  'from-purple-500 to-purple-700',
-  'from-red-500 to-red-700',
-  'from-teal-400 to-teal-600',
-  'from-orange-400 to-orange-600',
+// NeoBrutal 平涂色块(循环使用),ink 底配白字,其余配黑字
+const TILE_COLORS = [
+  'bg-main text-black',
+  'bg-lemon text-black',
+  'bg-mint text-black',
+  'bg-hotpink text-black',
+  'bg-ink text-white',
+  'bg-main text-black',
+  'bg-lemon text-black',
+  'bg-mint text-black',
+  'bg-hotpink text-black',
 ];
 
 export const ProtocolCards = React.memo(() => (
-  <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
     {PROTOCOL_CARDS.map((protocol, index) => (
       <div
         key={protocol.name}
-        className="group relative overflow-hidden rounded-3xl p-5 bg-white/60 backdrop-blur-sm border-white/20 clay-card transition-all duration-500 hover:-translate-y-2 hover:clay-card-hover"
+        className="flex cursor-default flex-col items-center gap-2.5 rounded-lg border-2 border-ink bg-paper p-4 text-center shadow-brutal transition-all duration-100 hover:-translate-x-[1px] hover:-translate-y-[1px] hover:shadow-none"
       >
-        {/* Gradient orb background */}
-        <div className={`absolute -top-8 -right-8 w-20 h-20 rounded-full bg-gradient-to-br ${CARD_GRADIENTS[index % CARD_GRADIENTS.length]}/20 blur-xl transition-all duration-500 group-hover:scale-150`} />
-
-        {/* Protocol badge */}
-        <div className="relative z-10">
-          <div className={`inline-flex items-center justify-center w-10 h-10 rounded-2xl bg-gradient-to-br ${CARD_GRADIENTS[index % CARD_GRADIENTS.length]} clay-button mb-3`}>
-            <span className="text-white text-sm font-black">
-              {protocol.name.charAt(0)}
-            </span>
-          </div>
-          <span className="text-xs font-bold text-clay-foreground" style={{ fontFamily: 'Nunito, sans-serif' }}>
-            {protocol.name}
-          </span>
-        </div>
+        {/* Initial letter tile */}
+        <span
+          className={`grid h-10 w-10 place-items-center rounded-md border-2 border-ink text-base font-extrabold select-none ${TILE_COLORS[index % TILE_COLORS.length]}`}
+        >
+          {protocol.name.charAt(0)}
+        </span>
+        <span className="text-xs font-bold text-ink leading-tight">
+          {protocol.name}
+        </span>
       </div>
     ))}
   </div>

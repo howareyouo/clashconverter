@@ -20,7 +20,7 @@ const DialogOverlay = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <BaseDialog.Backdrop
     ref={ref}
-    className={cn('fixed inset-0 z-50 bg-black/80', className)}
+    className={cn('fixed inset-0 z-50 bg-black/60', className)}
     {...props}
   />
 ));
@@ -35,17 +35,17 @@ const DialogContent = React.forwardRef<
     <BaseDialog.Popup
       ref={ref}
       className={cn(
-        'fixed left-[50%] top-[50%] z-50 grid w-full max-w-lg translate-x-[-50%] translate-y-[-50%] gap-4 border border-stone-200 bg-white p-6 shadow-lg sm:rounded-lg dark:border-stone-800 dark:bg-stone-950',
+        'fixed left-1/2 top-1/2 z-50 grid w-full max-w-lg -translate-x-1/2 -translate-y-1/2 gap-4 rounded-lg border-2 border-ink bg-paper p-6 text-ink shadow-brutal-lg',
         className
       )}
       {...props}
     >
       {children}
       <BaseDialog.Close
-        className="absolute right-4 top-4 rounded-md p-2 opacity-70 transition-all hover:bg-stone-100 hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-stone-950 focus:ring-offset-2 disabled:pointer-events-none dark:hover:bg-stone-800 dark:focus:ring-stone-300 dark:focus:ring-offset-stone-950"
+        className="absolute right-3 top-3 grid h-8 w-8 place-items-center rounded-md border-2 border-ink bg-paper text-ink shadow-brutal transition-all hover:bg-main hover:text-black active:translate-x-[1px] active:translate-y-[1px] active:shadow-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink disabled:pointer-events-none"
         aria-label="Close dialog"
       >
-        <X aria-hidden="true" className="h-4 w-4" />
+        <X aria-hidden="true" className="h-4 w-4 font-bold" />
       </BaseDialog.Close>
     </BaseDialog.Popup>
   </BaseDialog.Portal>
@@ -58,7 +58,7 @@ const DialogHeader = ({
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
     className={cn(
-      'flex flex-col space-y-1.5 text-center sm:text-left',
+      'flex flex-col gap-1.5 text-center sm:text-left',
       className
     )}
     {...props}
@@ -72,7 +72,7 @@ const DialogFooter = ({
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div
     className={cn(
-      'flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2',
+      'flex flex-col-reverse gap-2 sm:flex-row sm:justify-end',
       className
     )}
     {...props}
@@ -86,10 +86,7 @@ const DialogTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <BaseDialog.Title
     ref={ref}
-    className={cn(
-      'text-lg font-semibold leading-none tracking-tight',
-      className
-    )}
+    className={cn('text-lg font-bold leading-none tracking-tight', className)}
     {...props}
   />
 ));
@@ -101,7 +98,7 @@ const DialogDescription = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <BaseDialog.Description
     ref={ref}
-    className={cn('text-sm text-stone-500 dark:text-stone-400', className)}
+    className={cn('text-sm text-muted-foreground', className)}
     {...props}
   />
 ));

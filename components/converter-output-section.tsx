@@ -66,9 +66,9 @@ export const OutputSection = memo(({
         <Button
           variant="ghost"
           size="sm"
-          className="h-6 w-6 p-0 hover:bg-neo-border dark:hover:bg-neo-borderDark text-neo-muted dark:text-neo-mutedLight hover:text-neo-foreground dark:hover:text-white transition-colors duration-200 rounded-neo"
+          className="h-6 w-6 p-0"
         >
-          <Info className="w-3.5 h-3.5" />
+          <Info className="h-3.5 w-3.5" />
         </Button>
       }
     />
@@ -77,21 +77,21 @@ export const OutputSection = memo(({
   return (
     <>
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-        <Card className="neo-card relative overflow-hidden rounded-neoLg bg-neo-card dark:bg-neo-cardDark border border-neo-border dark:border-neo-borderDark h-full flex flex-col transition-all duration-200 hover:border-neo-borderStrong dark:hover:border-neo-borderStrongDark">
+        <Card className="relative flex h-full flex-col overflow-hidden">
           {/* Accent bar - right side for output */}
-          <div className="absolute right-0 top-0 bottom-0 w-0.5 bg-neo-foreground/20 dark:bg-white/20" />
+          <div className="absolute right-0 top-0 bottom-0 w-2 bg-lemon" />
 
-          <CardHeader className="relative z-10 pb-2 px-4 pt-4">
-            <div className="flex items-center justify-between">
+          <CardHeader className="relative z-10 px-5 pt-5 pb-2">
+            <div className="flex items-center justify-between gap-2">
               <CardTitle
-                className="flex items-center gap-2 cursor-pointer group select-none"
+                className="flex cursor-pointer items-center gap-2 select-none"
                 onClick={() => setDialogOpen(true)}
                 role="button"
                 tabIndex={0}
                 title="Click to view kernel features"
               >
                 {/* Technical label */}
-                <span className="text-xl md:text-2xl font-semibold text-neo-foreground dark:text-white tracking-tight">
+                <span className="text-xl md:text-2xl font-bold text-ink tracking-tight">
                   {labels.outputLabel}
                 </span>
               </CardTitle>
@@ -106,9 +106,9 @@ export const OutputSection = memo(({
             </div>
           </CardHeader>
 
-          <CardContent className="relative z-10 flex-1 flex flex-col px-4 pb-4">
-            {/* Editor Area - recessed, functional */}
-            <div className="flex-1 neo-input rounded-neoMd bg-neo-canvas dark:bg-neo-canvasDark border border-neo-border dark:border-neo-borderDark overflow-hidden">
+          <CardContent className="relative z-10 flex flex-1 flex-col pt-3">
+            {/* Editor Area - brutal well */}
+            <div className="flex-1 overflow-hidden rounded-lg border-2 border-ink bg-paper shadow-brutal">
               <PreviewEditor
                 key={outputFormat}
                 value={output}
@@ -119,26 +119,26 @@ export const OutputSection = memo(({
             </div>
 
             {/* Status Bar - technical, informative */}
-            <div className="mt-3 flex items-center justify-between text-xs h-5">
-              <div className="flex items-center gap-1.5 text-neo-muted dark:text-neo-mutedLight">
-                <Cpu className="w-3.5 h-3.5" />
-                <span className="mono">{kernelTitle}</span>
+            <div className="mt-3 flex h-5 items-center justify-between text-xs">
+              <div className="flex items-center gap-1.5 text-muted-foreground">
+                <Cpu className="h-3.5 w-3.5" strokeWidth={2.5} />
+                <span className="mono font-semibold">{kernelTitle}</span>
               </div>
-              <div className="mono text-neo-muted dark:text-neo-mutedLight">
+              <div className="mono font-semibold text-muted-foreground">
                 {itemCount} NODES
               </div>
             </div>
 
-            {/* Action Buttons - Sharp, functional */}
-            <div className="mt-3 flex gap-2 h-10">
+            {/* Action Buttons - brutal primary + paper */}
+            <div className="mt-3 flex h-10 gap-2">
               {/* Download Button - Primary action */}
               <Button
                 onClick={onDownload}
                 disabled={itemCount === 0}
-                className="flex-1 h-full rounded-neoMd bg-neo-foreground dark:bg-white text-neo-canvas dark:text-neo-canvasDark font-medium transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed border-0 hover:opacity-90"
+                className="h-full flex-1"
                 title={labels.download}
               >
-                <Download className="w-4 h-4 mr-2 shrink-0" />
+                <Download className="h-4 w-4 shrink-0" strokeWidth={2.5} />
                 {labels.download}
               </Button>
 
@@ -147,27 +147,23 @@ export const OutputSection = memo(({
                 variant="outline"
                 onClick={handleCopy}
                 disabled={itemCount === 0}
-                className="h-full px-4 rounded-neoMd bg-transparent hover:bg-neo-border dark:hover:bg-neo-borderDark text-neo-foreground dark:text-white font-medium border border-neo-border dark:border-neo-borderDark transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed"
+                className={`h-full px-4 ${copied ? 'bg-mint text-black hover:bg-mint' : ''}`}
                 title={labels.copy}
               >
                 {copied ? (
-                  <Check className="w-4 h-4 text-neo-success" />
+                  <Check className="h-4 w-4" strokeWidth={3} />
                 ) : (
-                  <Copy className="w-4 h-4" />
+                  <Copy className="h-4 w-4" strokeWidth={2.5} />
                 )}
               </Button>
             </div>
           </CardContent>
         </Card>
 
-        <DialogContent className="max-w-md rounded-neoLg border border-neo-border dark:border-neo-borderDark bg-neo-card dark:bg-neo-cardDark">
+        <DialogContent className="max-w-md">
           <DialogHeader>
-            <DialogTitle className="text-xl font-semibold text-neo-foreground dark:text-white tracking-tight">
-              Kernel Features
-            </DialogTitle>
-            <DialogDescription className="text-neo-muted dark:text-neo-mutedLight">
-              Supported features for this kernel
-            </DialogDescription>
+            <DialogTitle>Kernel Features</DialogTitle>
+            <DialogDescription>Supported features for this kernel</DialogDescription>
           </DialogHeader>
           <KernelFeatures
             title={kernelTitle}

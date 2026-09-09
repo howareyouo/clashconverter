@@ -8,7 +8,7 @@
 import { useTranslations } from 'next-intl';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, Check } from 'lucide-react';
 import Link from 'next/link';
 import {
   Accordion,
@@ -26,77 +26,74 @@ export function AboutContent() {
       <div className="mb-8">
         <Link href="/">
           <Button variant="ghost" size="sm" className="gap-2">
-            <ArrowLeft className="w-4 h-4" />
+            <ArrowLeft className="w-4 h-4" strokeWidth={2.5} />
             <span className="hidden sm:inline">{t('backToHome')}</span>
           </Button>
         </Link>
       </div>
 
       {/* H1 - Main heading */}
-      <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-8 text-stone-900 dark:text-stone-100">
+      <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-10 text-ink">
         {t('seoContent.title')}
       </h1>
 
       {/* Main content with target keywords */}
-      <div className="prose prose-stone dark:prose-invert max-w-none mb-12">
-        <p className="text-lg leading-relaxed text-stone-700 dark:text-stone-300 mb-6">
+      <div className="max-w-none mb-12">
+        <p className="text-lg leading-relaxed text-ink font-medium mb-6">
           {t('seoContent.intro')}
         </p>
 
-        <p className="text-base leading-relaxed text-stone-600 dark:text-stone-400 mb-6">
+        <p className="text-base leading-relaxed text-muted-foreground mb-6">
           {t('seoContent.privacy')}
         </p>
 
         {/* H2 - Features section */}
-        <h2 className="border-t border-stone-200 dark:border-stone-800 pt-10 text-center text-2xl md:text-3xl font-bold mt-10 mb-6 text-stone-900 dark:text-stone-100">
+        <h2 className="border-t-2 border-ink pt-10 mt-12 mb-8 text-center text-2xl md:text-3xl font-bold text-ink">
           {t('seoContent.features.title')}
         </h2>
 
-        <ul className="space-y-3 mb-8">
+        <ul className="space-y-3 mb-10">
           {t.raw('seoContent.features.items').map((item: string, index: number) => (
-            <li key={index} className="flex items-start">
-              <span className="text-green-500 dark:text-green-400 mr-2">✓</span>
-              <span className="text-stone-700 dark:text-stone-300">{item}</span>
+            <li
+              key={index}
+              className="flex items-start gap-3 rounded-lg border-2 border-ink bg-paper p-3 shadow-brutal"
+            >
+              <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-md border-2 border-ink bg-mint text-black">
+                <Check className="h-3.5 w-3.5" strokeWidth={4} />
+              </span>
+              <span className="text-sm font-semibold text-ink">{item}</span>
             </li>
           ))}
         </ul>
 
         {/* H2 - Supported protocols section */}
-        <h2 className="border-t border-stone-200 dark:border-stone-800 pt-10 text-center text-2xl md:text-3xl font-bold mt-10 mb-6 text-stone-900 dark:text-stone-100">
+        <h2 className="border-t-2 border-ink pt-10 mt-12 mb-8 text-center text-2xl md:text-3xl font-bold text-ink">
           {t('seoContent.protocols.title')}
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
           {t.raw('seoContent.protocols.items').map((protocol: { name: string; desc: string }, index: number) => (
-            <Card key={index} className="p-4 border-stone-200 dark:border-stone-800">
-              <h3 className="font-semibold text-stone-900 dark:text-stone-100 mb-2">
-                {protocol.name}
-              </h3>
-              <p className="text-sm text-stone-600 dark:text-stone-400">
-                {protocol.desc}
-              </p>
+            <Card key={index} className="p-4">
+              <h3 className="font-bold text-ink mb-1.5">{protocol.name}</h3>
+              <p className="text-sm text-muted-foreground">{protocol.desc}</p>
             </Card>
           ))}
         </div>
 
         {/* H2 - How to use section */}
-        <h2 className="text-2xl md:text-3xl font-bold mt-10 mb-6 text-stone-900 dark:text-stone-100 border-t border-stone-200 dark:border-stone-800 pt-10 text-center">
+        <h2 className="text-2xl md:text-3xl font-bold mt-12 mb-8 text-ink border-t-2 border-ink pt-10 text-center">
           {t('seoContent.howToUse.title')}
         </h2>
 
-        <div className="space-y-4 mb-8">
+        <div className="space-y-4 mb-10">
           {t.raw('seoContent.howToUse.steps').map((step: { title: string; desc: string }, index: number) => (
             <div key={index} className="flex gap-4">
-              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-stone-900 dark:bg-stone-100 text-stone-100 dark:text-stone-900 flex items-center justify-center font-bold text-sm">
+              <div className="grid h-8 w-8 shrink-0 place-items-center rounded-lg border-2 border-ink bg-main text-sm font-extrabold text-black shadow-brutal">
                 {index + 1}
               </div>
               <div>
-                <h3 className="font-semibold text-stone-900 dark:text-stone-100 mb-1">
-                  {step.title}
-                </h3>
-                <p className="text-stone-600 dark:text-stone-400">
-                  {step.desc}
-                </p>
+                <h3 className="font-bold text-ink mb-1">{step.title}</h3>
+                <p className="text-sm text-muted-foreground">{step.desc}</p>
               </div>
             </div>
           ))}
@@ -104,18 +101,18 @@ export function AboutContent() {
       </div>
 
       {/* FAQ Section - H2 with structured accordion */}
-      <div className="border-t border-stone-200 dark:border-stone-800 pt-10">
-        <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center text-stone-900 dark:text-stone-100">
+      <div className="border-t-2 border-ink pt-10">
+        <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center text-ink">
           {t('seoContent.faq.title')}
         </h2>
 
-        <Accordion className="w-full max-w-3xl mx-auto">
+        <Accordion className="w-full max-w-3xl mx-auto rounded-lg border-2 border-ink bg-paper px-5 shadow-brutal">
           {t.raw('seoContent.faq.items').map((faq: { q: string; a: string }, index: number) => (
             <AccordionItem key={index} value={`item-${index}`}>
-              <AccordionTrigger className="text-left text-stone-900 dark:text-stone-100 hover:text-stone-700 dark:hover:text-stone-300">
+              <AccordionTrigger className="text-ink">
                 {faq.q}
               </AccordionTrigger>
-              <AccordionContent className="text-stone-600 dark:text-stone-400">
+              <AccordionContent>
                 {faq.a}
               </AccordionContent>
             </AccordionItem>
@@ -125,11 +122,11 @@ export function AboutContent() {
 
       {/* CTA Section */}
       <div className="mt-12 text-center">
-        <p className="text-lg text-stone-700 dark:text-stone-300 mb-4">
+        <p className="text-lg font-medium text-ink mb-5">
           {t('seoContent.cta.text')}
         </p>
         <Link href="/">
-          <Button size="lg" className="bg-stone-900 dark:bg-stone-100 text-stone-100 dark:text-stone-900 hover:bg-stone-800 dark:hover:bg-stone-200">
+          <Button size="lg">
             {t('seoContent.cta.button')}
           </Button>
         </Link>

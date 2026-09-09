@@ -19,18 +19,18 @@ export function FormatSelector({ value, onChange, options, infoButton }: FormatS
       >
         <SelectTrigger
           aria-label="Select format"
-          className="w-auto min-w-[130px] max-w-[160px] h-8 rounded-neoMd bg-neo-canvas dark:bg-neo-canvasDark border border-neo-border dark:border-neo-borderDark text-sm font-medium text-neo-foreground dark:text-white transition-all duration-200 hover:border-neo-borderStrong dark:hover:border-neo-borderStrongDark focus:ring-2 focus:ring-neo-borderStrong dark:focus:ring-neo-borderStrongDark"
+          className="h-8 w-auto min-w-[130px] max-w-[160px]"
         >
           <SelectValue className="truncate" />
         </SelectTrigger>
-        <SelectContent className="rounded-neoMd border border-neo-border dark:border-neo-borderDark bg-neo-card dark:bg-neo-cardDark">
+        <SelectContent className="min-w-[160px]">
           {options.map((option) => (
             <SelectItem
               key={option.value}
               value={option.value}
-              className="rounded-neo mb-0.5 font-medium text-neo-foreground dark:text-white hover:bg-neo-border dark:hover:bg-neo-borderDark transition-colors duration-150 last:mb-0"
+              className="last:mb-0"
             >
-              <span className="truncate block max-w-[180px]">{option.label}</span>
+              <span className="block max-w-[180px] truncate">{option.label}</span>
             </SelectItem>
           ))}
         </SelectContent>

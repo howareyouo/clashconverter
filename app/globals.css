@@ -1,88 +1,116 @@
-/* Neo-Technical Minimalism - Refined Precision */
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+/* NeoBrutal UI - 全站视觉(neobrutalui.live 风格) */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  /* Warm Neutral Foundation */
-  --neo-canvas: #F5F3EE;
-  --neo-canvas-dark: #0A0A0C;
+  /* ── NeoBrutal 基础调色板 ─────────────────────────── */
+  --canvas: #F0EEFC;      /* 页面底: 浅薰衣草 */
+  --paper: #FFFFFF;       /* 卡片/浮层 */
+  --ink: #0B0B0F;         /* 文字 / 描边(深色模式翻转) */
+  --muted: #565367;       /* 次要文字 */
+  --main: #B6ACE4;        /* 主色 lavender */
+  --mint: #97EE88;
+  --lemon: #FED170;
+  --hotpink: #EE8888;
+  --brutal: #000000;      /* 硬投影色 */
 
-  --neo-foreground: #1A1A1C;
-  --neo-muted: #6B6B6F;
-  --neo-muted-light: #9A9A9E;
+  /* ── 兼容旧 neo-* 变量(值改为新调色板,旧类名自动换肤) ─ */
+  --neo-canvas: var(--canvas);
+  --neo-canvas-dark: #0A0A0F;
 
-  /* Sharp Electric Accent */
-  --neo-accent: #00D9FF;
-  --neo-accent-hover: #00B8D9;
-  --neo-accent-muted: rgba(0, 217, 255, 0.15);
+  --neo-foreground: var(--ink);
+  --neo-muted: var(--muted);
+  --neo-muted-light: #6F6C80;
 
-  /* Structural Colors */
-  --neo-card: #FAF8F5;
-  --neo-card-dark: #121214;
+  --neo-accent: var(--main);
+  --neo-accent-hover: #A196D8;
+  --neo-accent-muted: rgba(182, 172, 228, 0.28);
+
+  --neo-card: var(--paper);
+  --neo-card-dark: #1C1C26;
   --neo-card-elevated: #FFFFFF;
-  --neo-card-elevated-dark: #18181A;
+  --neo-card-elevated-dark: #262633;
 
-  --neo-border: rgba(0, 0, 0, 0.08);
-  --neo-border-strong: rgba(0, 0, 0, 0.15);
-  --neo-border-dark: rgba(255, 255, 255, 0.06);
-  --neo-border-strong-dark: rgba(255, 255, 255, 0.12);
+  --neo-border: var(--ink);
+  --neo-border-strong: var(--ink);
+  --neo-border-dark: #EDECF5;
+  --neo-border-strong-dark: #EDECF5;
 
-  /* State Colors */
-  --neo-success: #00C853;
-  --neo-warning: #FFB300;
-  --neo-error: #FF5252;
+  --neo-success: var(--mint);
+  --neo-warning: var(--lemon);
+  --neo-error: var(--hotpink);
 
-  /* Standard shadcn variables mapped */
-  --background: 40 20% 96%;
-  --foreground: 0 0% 10%;
-  --card: 40 30% 99%;
-  --card-foreground: 0 0% 10%;
-  --popover: 40 30% 99%;
-  --popover-foreground: 0 0% 10%;
-  --primary: 190 100% 50%;
-  --primary-foreground: 0 0% 100%;
-  --secondary: 40 15% 92%;
-  --secondary-foreground: 0 0% 10%;
-  --muted: 40 10% 88%;
-  --muted-foreground: 0 0% 45%;
-  --accent: 190 100% 50%;
-  --accent-foreground: 0 0% 100%;
-  --destructive: 0 84% 60%;
-  --destructive-foreground: 0 0% 98%;
-  --border: 0 0% 85%;
-  --input: 0 0% 85%;
-  --ring: 190 100% 50%;
+  /* ── shadcn 语义色同步映射 ─────────────────────── */
+  --background: 249 70% 96%;     /* #F0EEFC */
+  --foreground: 250 22% 5%;      /* #0B0B0F */
+  --card: 0 0% 100%;
+  --card-foreground: 250 22% 5%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 250 22% 5%;
+  --primary: 251 51% 78%;        /* #B6ACE4 */
+  --primary-foreground: 0 0% 0%;
+  --secondary: 253 56% 94%;      /* #EAE6F8 浅紫 surface */
+  --secondary-foreground: 250 22% 5%;
+  --muted: 251 44% 93%;
+  --muted-foreground: 249 29% 36%; /* #565367 */
+  --accent: 251 51% 78%;
+  --accent-foreground: 0 0% 0%;
+  --destructive: 0 75% 73%;      /* #EE8888 */
+  --destructive-foreground: 0 0% 0%;
+  --border: 250 22% 5%;
+  --input: 250 22% 5%;
+  --ring: 250 22% 5%;
   --radius: 0.5rem;
-  --chart-1: 190 100% 50%;
-  --chart-2: 40 80% 55%;
-  --chart-3: 120 70% 45%;
-  --chart-4: 280 60% 55%;
-  --chart-5: 30 90% 55%;
+  --chart-1: 251 51% 78%;
+  --chart-2: 111 75% 73%;        /* mint */
+  --chart-3: 41 99% 72%;         /* lemon */
+  --chart-4: 0 75% 73%;          /* hotpink */
+  --chart-5: 250 22% 5%;
 }
 
 .dark {
-  --background: 0 5% 5%;
-  --foreground: 0 0% 95%;
-  --card: 0 8% 8%;
-  --card-foreground: 0 0% 95%;
-  --popover: 0 8% 8%;
-  --popover-foreground: 0 0% 95%;
-  --primary: 190 100% 45%;
-  --primary-foreground: 0 0% 5%;
-  --secondary: 0 12% 12%;
-  --secondary-foreground: 0 0% 95%;
-  --muted: 0 10% 15%;
-  --muted-foreground: 0 0% 65%;
-  --accent: 190 100% 45%;
-  --accent-foreground: 0 0% 5%;
-  --destructive: 0 62% 40%;
-  --destructive-foreground: 0 0% 98%;
-  --border: 0 0% 18%;
-  --input: 0 0% 18%;
-  --ring: 190 100% 45%;
+  --canvas: #0A0A0F;
+  --paper: #1C1C26;
+  --ink: #EDECF5;
+  --muted: #9B99AC;
+  --brutal: #000000;
+
+  /* neo-* 基础变量在深色下也翻转(覆盖未写 dark: 变体的类) */
+  --neo-canvas: var(--canvas);
+  --neo-foreground: var(--ink);
+  --neo-muted: var(--muted);
+  --neo-muted-light: #A8A5BC;
+  --neo-accent: var(--main);
+  --neo-accent-muted: rgba(182, 172, 228, 0.22);
+  --neo-card: var(--paper);
+  --neo-card-elevated: #262633;
+  --neo-border: var(--ink);
+  --neo-border-strong: var(--ink);
+
+  /* shadcn 语义色深色映射 */
+  --background: 240 20% 5%;      /* #0A0A0F */
+  --foreground: 250 31% 94%;     /* #EDECF5 */
+  --card: 240 15% 13%;           /* #1C1C26 */
+  --card-foreground: 250 31% 94%;
+  --popover: 240 15% 13%;
+  --popover-foreground: 250 31% 94%;
+  --primary: 251 51% 78%;
+  --primary-foreground: 0 0% 0%;
+  --secondary: 240 15% 17%;
+  --secondary-foreground: 250 31% 94%;
+  --muted: 240 13% 10%;
+  --muted-foreground: 246 10% 64%; /* #9B99AC */
+  --accent: 251 51% 78%;
+  --accent-foreground: 0 0% 0%;
+  --destructive: 0 67% 68%;
+  --destructive-foreground: 0 0% 0%;
+  --border: 250 31% 94%;
+  --input: 250 31% 94%;
+  --ring: 250 31% 94%;
+  --chart-5: 250 31% 94%;
 }
 
 @layer base {
@@ -101,19 +129,21 @@
 
   .dark body,
   body.dark {
-    background-color: var(--neo-canvas-dark);
-    color: #E8E8EA;
+    background-color: var(--neo-canvas);
+    color: var(--neo-foreground);
   }
 
   /* Technical Headings */
   h1, h2, h3 {
     font-family: 'Space Grotesk', sans-serif;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.02em;
+    font-weight: 700;
   }
 
   h4, h5, h6 {
     font-family: 'Inter', sans-serif;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
+    font-weight: 600;
   }
 
   /* Monospace for technical labels */
@@ -124,191 +154,28 @@
 }
 
 @layer utilities {
-  /* Structural Shadows - Not Decorative */
-
-  /* Elevated Surface - subtle lift */
-  .neo-surface {
-    box-shadow:
-      0 1px 0 var(--neo-border),
-      0 4px 12px rgba(0, 0, 0, 0.03);
-  }
-
-  .dark .neo-surface {
-    box-shadow:
-      0 1px 0 var(--neo-border-dark),
-      0 4px 12px rgba(0, 0, 0, 0.3);
-  }
-
-  /* Card - clean edge with subtle depth */
-  .neo-card {
-    box-shadow:
-      0 1px 0 var(--neo-border-strong),
-      0 8px 24px rgba(0, 0, 0, 0.04);
-  }
-
-  .dark .neo-card {
-    box-shadow:
-      0 1px 0 var(--neo-border-strong-dark),
-      0 8px 24px rgba(0, 0, 0, 0.4);
-  }
-
-  /* Hover state - meaningful lift */
-  .neo-card-hover {
-    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
-  }
-
-  .neo-card-hover:hover {
-    transform: translateY(-2px);
-    box-shadow:
-      0 1px 0 var(--neo-border-strong),
-      0 12px 32px rgba(0, 0, 0, 0.06);
-  }
-
-  .dark .neo-card-hover:hover {
-    box-shadow:
-      0 1px 0 var(--neo-border-strong-dark),
-      0 12px 32px rgba(0, 0, 0, 0.5);
-  }
-
-  /* Button - functional convexity */
-  .neo-button {
-    box-shadow:
-      0 1px 0 rgba(0, 0, 0, 0.06),
-      0 2px 4px rgba(0, 0, 0, 0.04);
-  }
-
-  .dark .neo-button {
-    box-shadow:
-      0 1px 0 rgba(255, 255, 255, 0.04),
-      0 2px 4px rgba(0, 0, 0, 0.3);
-  }
-
-  .neo-button:hover {
-    box-shadow:
-      0 1px 0 rgba(0, 0, 0, 0.08),
-      0 4px 8px rgba(0, 0, 0, 0.06);
-  }
-
-  .dark .neo-button:hover {
-    box-shadow:
-      0 1px 0 rgba(255, 255, 255, 0.06),
-      0 4px 8px rgba(0, 0, 0, 0.4);
-  }
-
-  /* Input - recessed for clarity */
-  .neo-input {
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
-  }
-
-  .dark .neo-input {
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.3);
-  }
-
-  /* Accent Glow - purposeful, not decorative */
-  .neo-glow {
-    box-shadow: 0 0 0 1px var(--neo-accent-muted);
-  }
-
-  .neo-glow-active {
-    box-shadow:
-      0 0 0 1px var(--neo-accent),
-      0 0 20px var(--neo-accent-muted);
-  }
-
-  /* Geometric Accent Bar */
-  .neo-accent-bar {
-    position: relative;
-  }
-
-  .neo-accent-bar::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 3px;
-    background: var(--neo-accent);
-  }
-
-  /* Grid Lines - structural */
-  .neo-grid-lines {
-    background-image:
-      linear-gradient(var(--neo-border) 1px, transparent 1px),
-      linear-gradient(90deg, var(--neo-border) 1px, transparent 1px);
-    background-size: 24px 24px;
-  }
-
-  .dark .neo-grid-lines {
-    background-image:
-      linear-gradient(var(--neo-border-dark) 1px, transparent 1px),
-      linear-gradient(90deg, var(--neo-border-dark) 1px, transparent 1px);
-  }
-
-  /* Typography Utilities */
-  .neo-heading-xl {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(2.5rem, 5vw, 4rem);
-    font-weight: 700;
-    letter-spacing: -0.04em;
-    line-height: 1.1;
-  }
-
-  .neo-heading-lg {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(1.5rem, 3vw, 2rem);
-    font-weight: 600;
-    letter-spacing: -0.03em;
-    line-height: 1.2;
-  }
-
-  .neo-heading-md {
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: clamp(1rem, 1.5vw, 1.25rem);
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    line-height: 1.3;
-  }
-
+  /* 技术微标签: mono 大写粗体 */
   .neo-label {
     font-family: 'JetBrains Mono', monospace;
     font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.05em;
+    font-weight: 600;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-  }
-
-  /* Entrance Animations */
-  .neo-enter {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-
-  .neo-enter-active {
-    opacity: 1;
-    transform: translateY(0);
-    transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-  }
-
-  /* Stagger delays */
-  .neo-delay-1 { transition-delay: 0.05s; }
-  .neo-delay-2 { transition-delay: 0.1s; }
-  .neo-delay-3 { transition-delay: 0.15s; }
-  .neo-delay-4 { transition-delay: 0.2s; }
-  .neo-delay-5 { transition-delay: 0.25s; }
-
-  /* Focus States */
-  .neo-focus {
-    outline: none;
-  }
-
-  .neo-focus:focus-visible {
-    outline: 2px solid var(--neo-accent);
-    outline-offset: 2px;
   }
 
   /* Text Balance */
   .text-balance {
     text-wrap: balance;
+  }
+
+  /* 可访问焦点: 2px 硬描边 */
+  .brutal-focus {
+    outline: none;
+  }
+
+  .brutal-focus:focus-visible {
+    outline: 2px solid var(--ink);
+    outline-offset: 2px;
   }
 }
 
@@ -334,14 +201,20 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--neo-border-strong);
-  border-radius: 4px;
-}
-
-.dark ::-webkit-scrollbar-thumb {
-  background: var(--neo-border-strong-dark);
+  background: var(--neo-muted);
+  border: 2px solid var(--neo-canvas);
+  border-radius: 0;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--neo-muted);
+  background: var(--neo-foreground);
+}
+
+/* Sonner toast: NeoBrutal 外壳 */
+.sonner-toast {
+  border: 2px solid var(--ink) !important;
+  border-radius: 8px !important;
+  box-shadow: 4px 4px 0 0 var(--brutal) !important;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500 !important;
 }

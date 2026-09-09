@@ -13,14 +13,13 @@ export function SwapButton({ onClick, disabled, variant = 'desktop', label }: Sw
     return (
       <div className="mt-2 lg:hidden">
         <Button
-          variant="outline"
-          className="w-full h-11 rounded-neoMd bg-neo-card dark:bg-neo-cardDark text-neo-foreground dark:text-white font-medium border border-neo-border dark:border-neo-borderDark transition-all duration-200 hover:border-neo-borderStrong dark:hover:border-neo-borderStrongDark disabled:opacity-40 disabled:cursor-not-allowed"
+          className="w-full h-11"
           onClick={onClick}
           disabled={disabled}
           size="default"
           title={disabled ? 'Add content to swap formats' : 'Swap input and output formats'}
         >
-          <ArrowRightLeft className="w-4 h-4 mr-2 shrink-0" />
+          <ArrowRightLeft className="h-4 w-4 shrink-0" strokeWidth={2.5} />
           {label || 'Swap Formats'}
         </Button>
       </div>
@@ -31,13 +30,13 @@ export function SwapButton({ onClick, disabled, variant = 'desktop', label }: Sw
     <Button
       size="default"
       variant="outline"
-      className="group relative w-12 h-12 rounded-neoMd bg-neo-card dark:bg-neo-cardDark text-neo-foreground dark:text-white border border-neo-border dark:border-neo-borderDark transition-all duration-200 hover:border-neo-borderStrong dark:hover:border-neo-borderStrongDark hover:bg-neo-canvas dark:hover:bg-neo-canvasDark disabled:opacity-40 disabled:cursor-not-allowed"
+      className="group relative h-12 w-12 rounded-lg p-0"
       onClick={onClick}
       title={disabled ? 'Add content to swap formats' : 'Swap input and output formats'}
       disabled={disabled}
       aria-label="Swap formats"
     >
-      <ArrowRightLeft className="w-5 h-5 transition-transform duration-200 group-hover:scale-110" />
+      <ArrowRightLeft className="h-5 w-5 transition-transform duration-200 group-hover:rotate-180" />
     </Button>
   );
 }

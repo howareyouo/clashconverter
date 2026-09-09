@@ -10,8 +10,11 @@ export function Footer() {
   const currentYear = new Date().getFullYear();
   const [showEmail, setShowEmail] = useState(false);
 
+  const chipClass =
+    "group flex cursor-pointer items-center gap-2 rounded-lg border-2 border-ink bg-paper px-4 py-2 text-sm font-bold text-ink shadow-brutal transition-all duration-100 hover:bg-main hover:text-black active:translate-x-[1px] active:translate-y-[1px] active:shadow-none";
+
   return (
-    <footer className="w-full py-8 md:py-12 bg-neo-card/50 dark:bg-neo-card-dark/50 backdrop-blur-sm border-t border-neo-border dark:border-neo-border-dark">
+    <footer className="w-full border-t-2 border-ink bg-paper py-8 md:py-10">
       <div className="mx-auto max-w-6xl px-4 md:px-8">
 
         {/* Main Footer Content - Clean horizontal layout */}
@@ -20,26 +23,26 @@ export function Footer() {
           {/* Left: Brand & Copyright */}
           <div className="flex flex-col items-center md:items-start gap-3">
             {/* Brand */}
-            <span className="neo-label text-neo-muted dark:text-neo-muted-light tracking-wide">
+            <span className="neo-label text-ink tracking-wide">
               CLASH CONVERTER
             </span>
 
             {/* Copyright */}
-            <p className="text-sm text-neo-muted dark:text-neo-muted-light font-medium">
+            <p className="text-sm text-muted-foreground font-medium">
               © {currentYear} {t('rights')}
             </p>
           </div>
 
           {/* Right: Action Buttons */}
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2.5">
             {/* Email Button */}
             <button
               onClick={() => setShowEmail(true)}
-              className="group flex items-center gap-2 px-4 py-2 text-sm font-medium text-neo-muted dark:text-neo-muted-light hover:text-neo-foreground dark:hover:text-white transition-all duration-200 border border-neo-border dark:border-neo-border-dark hover:border-neo-foreground/30 dark:hover:border-white/30 rounded-md"
+              className={chipClass}
               type="button"
               aria-label={showEmail ? 'Hide contact email' : 'Show contact email'}
             >
-              <Mail className="w-4 h-4" />
+              <Mail className="h-4 w-4" strokeWidth={2.5} />
               <span className="hidden sm:inline">
                 {showEmail ? CONTACT_EMAIL : t('contact')}
               </span>
@@ -50,11 +53,11 @@ export function Footer() {
               href="https://github.com/sunway910/clashconverter"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center gap-2 px-4 py-2 text-sm font-medium text-neo-muted dark:text-neo-muted-light hover:text-neo-foreground dark:hover:text-white transition-all duration-200 border border-neo-border dark:border-neo-border-dark hover:border-neo-foreground/30 dark:hover:border-white/30 rounded-md"
+              className={chipClass}
             >
-              <Github className="w-4 h-4" />
+              <Github className="h-4 w-4" strokeWidth={2.5} />
               <span className="hidden sm:inline">GitHub</span>
-              <ArrowUpRight className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+              <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
             </a>
           </div>
         </div>
