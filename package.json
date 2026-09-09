@@ -18,6 +18,7 @@
     "deploy": "opennextjs-cloudflare build && opennextjs-cloudflare deploy"
   },
   "dependencies": {
+    "@base-ui/react": "^1.7.0",
     "@codemirror/autocomplete": "^6.20.0",
     "@codemirror/commands": "^6.10.1",
     "@codemirror/lang-json": "^6.0.2",
@@ -31,10 +32,6 @@
     "@lezer/common": "^1.5.0",
     "@lezer/highlight": "^1.2.3",
     "@opennextjs/cloudflare": "1.14.9",
-    "@radix-ui/react-accordion": "^1.2.12",
-    "@radix-ui/react-dialog": "^1.1.15",
-    "@radix-ui/react-hover-card": "^1.1.15",
-    "@radix-ui/react-select": "^2.2.6",
     "clsx": "^2.1.1",
     "lucide-react": "^0.562.0",
     "next": "16.1.5",

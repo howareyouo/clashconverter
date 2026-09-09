@@ -12,8 +12,15 @@ interface FormatSelectorProps {
 export function FormatSelector({ value, onChange, options, infoButton }: FormatSelectorProps) {
   return (
     <div className="flex items-center gap-1.5">
-      <Select value={value} onValueChange={(val) => onChange(val as FormatType)} aria-label="Select format">
-        <SelectTrigger className="w-auto min-w-[130px] max-w-[160px] h-8 rounded-neoMd bg-neo-canvas dark:bg-neo-canvasDark border border-neo-border dark:border-neo-borderDark text-sm font-medium text-neo-foreground dark:text-white transition-all duration-200 hover:border-neo-borderStrong dark:hover:border-neo-borderStrongDark focus:ring-2 focus:ring-neo-borderStrong dark:focus:ring-neo-borderStrongDark">
+      <Select
+        value={value}
+        onValueChange={(val) => onChange(val as FormatType)}
+        items={options.map(({ value, label }) => ({ value, label }))}
+      >
+        <SelectTrigger
+          aria-label="Select format"
+          className="w-auto min-w-[130px] max-w-[160px] h-8 rounded-neoMd bg-neo-canvas dark:bg-neo-canvasDark border border-neo-border dark:border-neo-borderDark text-sm font-medium text-neo-foreground dark:text-white transition-all duration-200 hover:border-neo-borderStrong dark:hover:border-neo-borderStrongDark focus:ring-2 focus:ring-neo-borderStrong dark:focus:ring-neo-borderStrongDark"
+        >
           <SelectValue className="truncate" />
         </SelectTrigger>
         <SelectContent className="rounded-neoMd border border-neo-border dark:border-neo-borderDark bg-neo-card dark:bg-neo-cardDark">

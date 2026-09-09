@@ -29,7 +29,8 @@ export function LanguageToggle() {
   // js-index-maps: Use Map.get() for O(1) lookup instead of Array.find()
   const currentLanguage = LANGUAGE_MAP.get(locale);
 
-  const handleValueChange = (newLocale: string) => {
+  const handleValueChange = (newLocale: string | null) => {
+    if (!newLocale) return;
     const newPathname = pathname.replace(`/${locale}`, `/${newLocale}`);
     router.push(newPathname);
     setOpen(false);

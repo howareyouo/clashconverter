@@ -109,7 +109,7 @@ export function AboutContent() {
           {t('seoContent.faq.title')}
         </h2>
 
-        <Accordion type="single" collapsible className="w-full max-w-3xl mx-auto">
+        <Accordion className="w-full max-w-3xl mx-auto">
           {t.raw('seoContent.faq.items').map((faq: { q: string; a: string }, index: number) => (
             <AccordionItem key={index} value={`item-${index}`}>
               <AccordionTrigger className="text-left text-stone-900 dark:text-stone-100 hover:text-stone-700 dark:hover:text-stone-300">

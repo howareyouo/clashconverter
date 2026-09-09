@@ -49,16 +49,18 @@ export function ClientDialog() {
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>
-        <Button
-          variant="outline"
-          size="sm"
-          className="h-9 gap-2 border-stone-200 dark:border-stone-800"
-        >
-          <Download className="h-4 w-4" />
-          <span className="hidden sm:inline">{t('buttonLabel')}</span>
-        </Button>
-      </DialogTrigger>
+      <DialogTrigger
+        render={
+          <Button
+            variant="outline"
+            size="sm"
+            className="h-9 gap-2 border-stone-200 dark:border-stone-800"
+          >
+            <Download className="h-4 w-4" />
+            <span className="hidden sm:inline">{t('buttonLabel')}</span>
+          </Button>
+        }
+      />
       <DialogContent className="max-w-3xl max-h-[80vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="text-2xl">{t('title')}</DialogTitle>

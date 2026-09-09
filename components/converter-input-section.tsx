@@ -51,15 +51,17 @@ export const InputSection = memo(({
   const [dialogOpen, setDialogOpen] = useState(false);
 
   const infoButton = (
-    <DialogTrigger asChild>
-      <Button
-        variant="ghost"
-        size="sm"
-        className="h-6 w-6 p-0 hover:bg-neo-border dark:hover:bg-neo-borderDark text-neo-muted dark:text-neo-mutedLight hover:text-neo-foreground dark:hover:text-white transition-colors duration-200 rounded-neo"
-      >
-        <Info className="w-3.5 h-3.5" />
-      </Button>
-    </DialogTrigger>
+    <DialogTrigger
+      render={
+        <Button
+          variant="ghost"
+          size="sm"
+          className="h-6 w-6 p-0 hover:bg-neo-border dark:hover:bg-neo-borderDark text-neo-muted dark:text-neo-mutedLight hover:text-neo-foreground dark:hover:text-white transition-colors duration-200 rounded-neo"
+        >
+          <Info className="w-3.5 h-3.5" />
+        </Button>
+      }
+    />
   );
 
   return (
