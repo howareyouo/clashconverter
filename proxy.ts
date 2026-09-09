@@ -76,5 +76,6 @@ export async function proxy(request: NextRequest) {
 
 // Matcher configuration for Edge Middleware
 export const config = {
-  matcher: ['/', '/((?!api|_next|_vercel|.*\\..*).*)']
+  matcher: ['/', '/((?!api|_next|_vercel|.*\\..*).*)'],
+  runtime: 'edge',
 };
